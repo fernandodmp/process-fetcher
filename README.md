@@ -33,7 +33,3 @@ Em um outro terminal utilize o comando abaixo para iniciar o servidor da interfa
 Caso seja necessário, faça as migrações com:
 
 `python manage.py migrate`
-
-### Solving
-
-After the maze generation is over, press any key to start solving it
