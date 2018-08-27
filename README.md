@@ -22,12 +22,15 @@ O chrome Web Driver deve ser baixado e instalado manualmente conforme o site: ht
 
 ### How to use
 Em um terminal na pasta do repositório inicie o Celery conforme o comando abaixo:
+
 `celery -A challenge  worker`
 
 Em um outro terminal utilize o comando abaixo para iniciar o servidor da interface web:
+
 `python manage.py runserver`
 
 Caso seja necessário, faça as migrações com:
+
 `python manage.py migrate`
 
 ### Solving
