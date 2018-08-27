@@ -18,6 +18,7 @@ A unified web interface where users can fetch data from differents tribunals
 ### Install Requirements
 
 `pip install -r requirements.txt`
+
 O chrome Web Driver deve ser baixado e instalado manualmente conforme o site: http://chromedriver.chromium.org/downloads 
 
 ### How to use
