@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Informações do Processo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>
+        Processo: {{Numero}}
+        <br>
+        Tribunal: {{Tribunal}}
+    </h1>
+    <h2>Dados do Processo:</h2>
+    {{Dados|safe}}
+    <br>
+    <h2>Partes Interessadas</h2>
+    {{Partes|safe}}
+    <br>
+    <h2>Movimentações do Processo</h2>
+    {{Movimentacoes|safe}}
+</body>
+</html>
