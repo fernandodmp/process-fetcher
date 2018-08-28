@@ -60,9 +60,9 @@ def tribunal_crawler(url, process_num):
         movimentacoes = pd.read_html(str(movimentacoes))[0].drop("Unnamed: 1", axis = 1)
 
         #Returning the fetched data as html strings
-        return [dados_processo.to_html(header = False, index = False), 
-            partes_interessadas.to_html(header = False, index = False), 
-            movimentacoes.to_html(index = False,  justify = 'left')]
+        return [dados_processo.to_html(header = False, index = False, classes = ('table table-striped table-bordered')), 
+            partes_interessadas.to_html(header = False, index = False, classes = ('table table-striped table-bordered')), 
+            movimentacoes.to_html(index = False,  justify = 'left', classes = ('table table-striped table-bordered'))]
 
     except:
         driver.quit()
