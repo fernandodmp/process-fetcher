@@ -7,4 +7,5 @@ class SearchForm(forms.Form):
     """
     tribunal_choice = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Tribunal', 'required':'true'}), 
         choices = [('TJSP', 'TJSP'), ('TJMS', 'TJMS'),], label = 'Tribunal')
-    process_number = forms.CharField(max_length=25, min_length=25, required = True, label = 'Numero do Processo', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    process_number = forms.CharField(max_length=25, min_length=25, required = True, label = 'Número do Processo', widget=forms.TextInput(attrs={'class': 'form-control', 
+        'placeholder': 'NNNNNNN-DD.AAAA.J.TR.OOOO'}))
