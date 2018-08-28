@@ -20,7 +20,7 @@ def tribunal_crawler(url, process_num):
 
     #Web-Driver Settings and Initialization
     chrome_options = Options()
-    chrome_options.add_argument("--headless")
+    chrome_options.set_headless(headless=True)
     prefs = {"profile.managed_default_content_settings.images":2}
     chrome_options.add_experimental_option("prefs",prefs)
     driver = webdriver.Chrome(chrome_options=chrome_options)
@@ -37,11 +37,16 @@ def tribunal_crawler(url, process_num):
         form_button = driver.find_element_by_id('pbEnviar')
         form_button.click()
         #Fully opening the hidden info
-        all_parts = driver.find_element_by_id('linkpartes')
-        all_parts.click()
-        all_moves = driver.find_element_by_id('linkmovimentacoes')
-        all_moves.click()
-
+        try:
+            all_parts = driver.find_element_by_id('linkpartes')
+            all_parts.click()
+        except:
+            pass
+        try:
+            all_moves = driver.find_element_by_id('linkmovimentacoes')
+            all_moves.click()
+        except:
+            pass
         #Creating the bs4 html parser as it's faster than selenium's
         page = BeautifulSoup(driver.page_source, 'html.parser')
 
@@ -53,10 +58,14 @@ def tribunal_crawler(url, process_num):
 
         #Fetching the interested parts section and transforming it to a pandas dataframe
         partes_interessadas = page.find('table', {"id": "tableTodasPartes"})
+        if partes_interessadas is None:
+                partes_interessadas = page.find('table', {"id": "tablePartesPrincipais"})
         partes_interessadas = pd.read_html(str(partes_interessadas))[0]
 
         #Fetching the process transactions section, transforming it to a pandas dataframe and adjusting
         movimentacoes = page.find("tbody", {'id': 'tabelaTodasMovimentacoes'}).parent
+        if movimentacoes is None:
+            movimentacoes = page.find("tbody", {'id': 'tabelaUltimasMovimentacoes'}).parent
         movimentacoes = pd.read_html(str(movimentacoes))[0].drop("Unnamed: 1", axis = 1)
 
         #Returning the fetched data as html strings
@@ -65,7 +74,6 @@ def tribunal_crawler(url, process_num):
             movimentacoes.to_html(index = False,  justify = 'left', classes = ('table table-striped table-bordered'))]
 
     except:
-        driver.quit()
         return None
 
     finally:
