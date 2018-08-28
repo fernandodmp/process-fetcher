@@ -13,6 +13,7 @@ A unified web interface where users can fetch data from differents tribunals
 - Pandas
 - django_celery_results
 - Chrome WebDriver
+- RabbitMQ
 
 
 ### Install Requirements
