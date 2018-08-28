@@ -19,7 +19,9 @@ A unified web interface where users can fetch data from differents tribunals
 
 `pip install -r requirements.txt`
 
-O chrome Web Driver deve ser baixado e instalado manualmente conforme o site: http://chromedriver.chromium.org/downloads 
+O chrome Web Driver deve ser baixado e instalado manualmente conforme o site: http://chromedriver.chromium.org/downloads.
+
+O RabbitMQ também deve ser baixado e instalado manualmente comforme o site: https://www.rabbitmq.com/download.html.
 
 ### How to use
 Em um terminal na pasta do repositório inicie o Celery conforme o comando abaixo:
